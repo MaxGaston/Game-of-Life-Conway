@@ -15,20 +15,22 @@ int main(int argc, char *argv[])
     int record[WIDTH][HEIGHT] = {0};
 
     srand(time(NULL));
-    
+
+    // Game of Life setup
     if(!init_gol(board, START_ALIVE))
     {
         printf("Failed to initialize board!");
         return 1;
     }
-
+    
+    // SDL setup
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         printf( "SDL not initialized. SDL_Error: %s\n", SDL_GetError());
         return 0;
     }
         
-    //Create window
+    // Create window
     window = SDL_CreateWindow("ETEC2110 Lab7", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
@@ -61,9 +63,6 @@ int main(int argc, char *argv[])
         {
             setCell(board, record, event.button.x, event.button.y, 0);
         }
-        
-        SDL_PollEvent( &event );
-
         if(!paused)
         {
             updateRecord(board, record);
@@ -72,6 +71,7 @@ int main(int argc, char *argv[])
 
         display(board, record, renderer);
 
+        SDL_PollEvent( &event );
         switch( event.type )
         {
         case SDL_KEYDOWN:
@@ -84,18 +84,25 @@ int main(int argc, char *argv[])
             // Reset
             case SDLK_r:
                 reset(board, 10000);
+                if(paused) updateRecord(board, record);
                 break;
             // Add cells
             case SDLK_a:
                 addCells(board, 100);
+                if(paused) updateRecord(board, record);
                 break;
             // Kill cells
             case SDLK_k:
                 killCells(board, 10);
+                if(paused) updateRecord(board, record);
                 break;
             // Step
             case SDLK_SPACE:
-                if(paused) nextGen(board);
+                if(paused)
+                {
+                    nextGen(board);
+                    updateRecord(board, record);
+                } 
                 break;
             // Quit
             case SDLK_ESCAPE:

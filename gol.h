@@ -21,7 +21,7 @@
 #define SCREEN_WIDTH (WIDTH * 5 - 1) + BORDER
 #define SCREEN_HEIGHT (HEIGHT * 5 - 1) + BORDER
 
-#define BRIGHTNESS_LEVELS 16
+#define BRIGHTNESS_LEVELS 100
 
 int init_gol(int board[WIDTH][HEIGHT], int num_alive);
 void display(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], SDL_Renderer * rend);

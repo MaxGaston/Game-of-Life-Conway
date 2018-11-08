@@ -115,26 +115,13 @@ int addCells(int board[WIDTH][HEIGHT], int num)
 
 int setCell(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], int x, int y, int state)
 {
-    int cellx =  x / 5;
-    int celly =  y / 5;
+    int cellx =  (x / 5) - 2;
+    int celly =  (y / 5) - 2;
     if(cellx >= 0 && cellx <= WIDTH)
         if(celly >= 0 && celly <= HEIGHT)
         {
-            int xmin = cellx > 0 ? -1 : 0;
-            int xmax = cellx < WIDTH ? 1 : 0;
-            int ymin = celly > 0 ? -1 : 0;
-            int ymax = celly < HEIGHT ? 1 : 0;
-
             board[cellx][celly] = state;
-            //board[cellx-1][celly] = state;
-            //board[cellx+1][celly] = state;
-            //board[cellx][celly-1] = state;
-            //board[cellx][celly+1] = state;
             record[cellx][celly] = state;
-            //record[cellx-1][celly] = state;
-            //record[cellx+1][celly] = state;
-            //record[cellx][celly-1] = state;
-            //record[cellx][celly+1] = state;
         }
 }
 
