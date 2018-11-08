@@ -1,6 +1,8 @@
 # Game of Life-Conway
 
-Conway's Game of Life, done in C.
+Conway's Game of Life, done in C with SDL.
+
+Compile: gcc main.c gol.c -o main.exe -std=c99 lmingw32 -lSDL2main -lSDL2
 
 User controls:<br>
   * Left mouse click: paints living cells on the cursor's position in a "+" pattern<br>
