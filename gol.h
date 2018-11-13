@@ -16,10 +16,14 @@
 #define for_y for (int y = 0; y < HEIGHT; y++)
 #define ATTEMPT_LIMIT 100000
 
+// Cell constants
+#define CWIDTH 4
+#define CHEIGHT 4
+
 //Screen constants
 #define BORDER 20
-#define SCREEN_WIDTH (WIDTH * 5 - 1) + BORDER
-#define SCREEN_HEIGHT (HEIGHT * 5 - 1) + BORDER
+#define SCREEN_WIDTH (WIDTH * CWIDTH) + BORDER
+#define SCREEN_HEIGHT (HEIGHT * CHEIGHT) + BORDER
 
 #define BRIGHTNESS_LEVELS 100
 
