@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <SDL.h>
+#include <string.h>
 #include "gol.h"
 
 int main(int argc, char *argv[])
@@ -40,15 +41,13 @@ int main(int argc, char *argv[])
         return 0;
     }
 
+    // Create renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if(!renderer)
     {
         printf("Failed to create renderer! SDL_Error: %s\n", SDL_GetError());
         return 0;
     }
-
-    SDL_SetRenderDrawColor(renderer, BLACK);
-    SDL_RenderClear(renderer);
     
     SDL_Event event;
     while(!done)
@@ -118,9 +117,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    //Destroy window
+    // Cleanup
     SDL_DestroyWindow(window);
-    //Quit SDL subsystems
     SDL_Quit();
 	
 	return 0;

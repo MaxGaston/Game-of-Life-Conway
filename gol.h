@@ -19,11 +19,12 @@
 // Cell constants
 #define CWIDTH 4
 #define CHEIGHT 4
+#define CELL_GAP 1
 
 //Screen constants
 #define BORDER 20
-#define SCREEN_WIDTH (WIDTH * CWIDTH) + BORDER
-#define SCREEN_HEIGHT (HEIGHT * CHEIGHT) + BORDER
+#define SCREEN_WIDTH WIDTH * (CWIDTH + CELL_GAP) + BORDER
+#define SCREEN_HEIGHT HEIGHT * (CHEIGHT + CELL_GAP) + BORDER
 
 #define BRIGHTNESS_LEVELS 100
 
