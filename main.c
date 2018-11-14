@@ -2,7 +2,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include <SDL.h>
-#include <string.h>
 #include "gol.h"
 
 int main(int argc, char *argv[])
