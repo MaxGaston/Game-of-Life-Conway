@@ -12,12 +12,13 @@
 4. A dead cell with exactly three live neighbors becomes alive.
 */
 
-int init_gol(int board[WIDTH][HEIGHT], int num_alive)
+int init_gol(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], int num_alive)
 {
     if(num_alive > CELLS) return 0;
 
     addCells(board, num_alive);
-
+	memcpy(record, board, CELLS * sizeof(int));
+	
     return 1;
 }
 
@@ -41,8 +42,8 @@ void display(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], SDL_Renderer *
 
         float n = record[x][y];
 
-        r = (BRIGHTNESS_LEVELS / n) * 255;
-        b = 255 - r;
+        r = (n / BRIGHTNESS_LEVELS) * 255;
+		b = r > 0 ? 255 -r : 0;
 
         SDL_SetRenderDrawColor(rend, (int)r, (int)g, (int)b, (int)a);
         SDL_RenderFillRect(rend, &rect);  
@@ -99,15 +100,19 @@ int addCells(int board[WIDTH][HEIGHT], int num)
 
     while(num)
     {
-        if(attempt++ > ATTEMPT_LIMIT) break;
-
         int x = rand() % WIDTH;
         int y = rand() % HEIGHT;
 
-        if(board[x][y]) continue;
-
-        board[x][y] = 1;
-        num--;
+        if(board[x][y])
+		{
+			if(attempt++ > ATTEMPT_LIMIT) break;
+		}
+		else
+		{
+			board[x][y] = 1;
+			num--;
+			attempt = 0;
+		}
     }
 
     return 1;

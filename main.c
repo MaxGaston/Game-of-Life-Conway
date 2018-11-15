@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     srand(time(NULL));
 
     // Game of Life setup
-    if(!init_gol(board, START_ALIVE))
+    if(!init_gol(board, record, START_ALIVE))
     {
         printf("Failed to initialize board!");
         return 1;

@@ -28,7 +28,7 @@
 
 #define BRIGHTNESS_LEVELS 100
 
-int init_gol(int board[WIDTH][HEIGHT], int num_alive);
+int init_gol(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], int num_alive);
 void display(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], SDL_Renderer * rend);
 int neighbors(int board[WIDTH][HEIGHT], int c, int r);
 int nextState(int board[WIDTH][HEIGHT], int c, int r);
