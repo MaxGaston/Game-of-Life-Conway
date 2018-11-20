@@ -122,8 +122,8 @@ int setCell(int board[WIDTH][HEIGHT], int record[WIDTH][HEIGHT], int x, int y, i
 {
     int cellx =  (x / 5) - 2;
     int celly =  (y / 5) - 2;
-    if(cellx >= 0 && cellx <= WIDTH)
-        if(celly >= 0 && celly <= HEIGHT)
+    if(cellx >= 0 && cellx < WIDTH)
+        if(celly >= 0 && celly < HEIGHT)
         {
             board[cellx][celly] = state;
             record[cellx][celly] = state;
